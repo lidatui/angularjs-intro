@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Demo2</title>
+</head>
+<body ng-controller="HelloController">
+
+<h1>Demo2</h1>
+<p>Hello {{ name }}!</p>
+
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('HelloController', function($scope){
+        $scope.name = 'World';
+    });
+</script>
+</body>
+</html>
