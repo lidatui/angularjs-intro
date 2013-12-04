@@ -2,13 +2,15 @@
 .cover{
   width: 1024px;
   height: 622px;
-  background: #191919;
   overflow: hidden;
   img{
     display: block;
     margin: auto;
   }
   h2{
+    text-align: center;
+  }
+  h3{
     text-align: center;
   }
 }
