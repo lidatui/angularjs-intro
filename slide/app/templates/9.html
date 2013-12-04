@@ -1,0 +1,19 @@
+<section ng-click="flip($event,'/8','/10')">
+    <div class="top-title">
+        <h1>Angular的启动过程</h1>
+    </div>
+    <div class="content absolute-center" style="width: 90%;height:70%;font-size: 1.5rem;">
+        <!-- http://qiita.com/nightire@github/items/11929acc43cf4d7a7fd2 -->
+        <ol>
+            <li>浏览器加载HTML并解析成DOM</li>
+            <li>浏览器加载angular.js脚本</li>
+            <li>Angular等待DOMContentLoaded事件</li>
+            <li>Angular寻找ng-app(指令)，这个指令界定了应用程序的作用范围(边界)</li>
+            <li>ng-app中指定的Module(如果有的话)被用来配置$injector(注入器)</li>
+            <li>$injector用于创建$compile(编译器)服务以及$rootScope(根作用域)</li>
+            <li>$compile服务用于编译DOM并将其连接至$rootScope</li>
+            <li>ng-init(指令)将"World"这个字符串赋值给当前作用域下的name属性</li>
+            <li>{{ name }}(插入型表达式)将name属性插入DOM，生成"Hello World!"</li>
+        </ol>
+    </div>
+</section>
