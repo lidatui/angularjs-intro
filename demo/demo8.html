@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Demo8</title>
+</head>
+<body ng-controller="DemoController">
+
+<h1>Demo8</h1>
+
+<ul>
+    <li ng-repeat="hello in hellos">
+        {{hello}}
+    </li>
+</ul>
+
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('app',[]);
+
+    app.value('name', 'miemiedev');
+
+    //service中写一个属性很简单
+    app.service('helloWorldFromService', function(name) {
+        this.sayHello = function() {
+            return "helloWorldFromService: Hello, "+name+"!"
+        };
+    });
+
+    //factory中写一个要麻烦一点
+    app.factory('helloWorldFromFactory', function(name) {
+        return {
+            sayHello: function() {
+                return "helloWorldFromFactory: Hello, "+name+"!"
+            }
+        };
+    });
+
+    //provider中要全部完成和配置
+    app.provider('helloWorld', function() {
+        //在provider函数中，不能注入service或factory，只能写一个$get方法
+
+        this.name = 'Default';
+
+        this.$get = function() {
+            var name = this.name;
+            return {
+                sayHello: function() {
+                    return "helloWorld: Hello, " + name + "!"
+                }
+            }
+        };
+
+        this.setName = function(name) {
+            this.name = name;
+        };
+    });
+
+    //这里可以对provider进行设置
+    app.config(function(helloWorldProvider){
+        helloWorldProvider.setName('World');
+    });
+    app.controller('DemoController', function($scope,helloWorld,helloWorldFromFactory,helloWorldFromService){
+        $scope.hellos = [
+            helloWorld.sayHello(),
+            helloWorldFromFactory.sayHello(),
+            helloWorldFromService.sayHello()];
+    });
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
     templateUrl: 'cover.html',
     controller: 'MainController'
   });
-  for(var i=1; i< 30; i++){
+  for(var i=1; i< 31; i++){
     $routeProvider .when('/'+i, {
       templateUrl: i+'.html',
       controller: 'MainController'

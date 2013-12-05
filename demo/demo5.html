@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Demo5</title>
+</head>
+<body ng-controller="DemoController">
+
+<h1>Demo5</h1>
+<ul>
+    <li ng-repeat="fruit in fruits">
+        {{fruit}}
+    </li>
+</ul>
+
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('DemoController', function($scope){
+        var fruits = ['苹果','葡萄','香蕉','草莓'];
+        $scope.fruits = fruits;
+    });
+</script>
+</body>
+</html>

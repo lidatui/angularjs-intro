@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-    <title>Demo3</title>
+    <title>Demo4</title>
 </head>
-<body ng-controller="HelloController">
+<body ng-controller="DemoController">
 
-<h1>Demo3</h1>
+<h1>Demo4</h1>
 <input ng-model="name">
-<p>Hello {{ name }}!</p>
+<p ng-click="alert(name)">Hello {{ name }}!</p>
 
 <script src="js/angular.js"></script>
 <script>
     var app = angular.module('app',[]);
     app.controller('HelloController', function($scope){
         $scope.name = 'World';
+        $scope.alert = function(arg){
+            alert(arg);
+        };
     });
 </script>
 </body>

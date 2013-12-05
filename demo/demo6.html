@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Demo6</title>
+    <style>
+        .selected{
+            background: green;
+        }
+    </style>
+</head>
+<body ng-controller="DemoController">
+
+<h1>Demo6</h1>
+<input ng-Model='query'/>
+<div>query: {{query}}</div>
+<select ng-Model='orderProp'>
+    <option value="id" selected >ID</option>
+    <option value="name">Name</option>
+</select>
+<div>orderBy: {{orderProp}}</div>
+<ul>
+    <li ng-repeat="item in items | filter:query | orderBy:orderProp:true" ng-bind="item.name" ng-click="selectFruit($index)" ng-class="{selected: $index===selectedRow}"></li>
+</ul>
+<button ng-click="addFruit()">加香蕉</button>
+
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('DemoController', function($scope){
+        $scope.selectedRow = -1;
+        $scope.orderProp = 'id';
+        $scope.items = [
+            {name: "苹果", id: 1},
+            {name: "橘子", id: 2},
+            {name: "葡萄", id: 3}
+        ];
+        $scope.selectFruit = function(index){
+            $scope.selectedRow = index;
+        };
+        $scope.addFruit = function(){
+            $scope.items.push({name: "香蕉", id: 4});
+        };
+        $scope.$watch('selectedRow', function(){
+            console.log($scope.selectedRow);
+        });
+    });
+</script>
+</body>
+</html>

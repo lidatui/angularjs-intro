@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Demo9</title>
+</head>
+<body ng-controller="DemoController">
+
+<h1>Demo9</h1>
+
+<ul>
+    <li ng-repeat="fruit in fruits">
+        {{fruit.name}}
+    </li>
+</ul>
+
+<script src="js/angular.js"></script>
+<script src="js/angular-resource.js"></script>
+<script>
+    var app = angular.module('app',['ngResource']);
+    app.controller('DemoController', function($scope,FruitService){
+        $scope.fruits = FruitService.findAll();
+    });
+
+    app.factory('FruitService', function($resource){
+       return $resource('/fruit/:id', {id:'@id'},{
+           findAll: {url: '/fruits', method: 'GET', isArray: true}
+       });
+    });
+</script>
+</body>
+</html>

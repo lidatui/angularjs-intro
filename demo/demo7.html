@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Demo7</title>
+</head>
+<body ng-controller="DemoController">
+
+<h1>Demo7</h1>
+
+<ul>
+    <li ng-repeat="fruit in fruits">
+        {{fruit.name}}
+    </li>
+</ul>
+
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('DemoController', function($scope,$http){
+        $http.get('fruits').success(function(data){
+            $scope.fruits = data;
+        });
+    });
+</script>
+</body>
+</html>
