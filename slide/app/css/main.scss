@@ -1,17 +1,38 @@
 html,body {
   height: 100%;
-}
-
-.view{
   background: rgb(20,20,20);
-  width: 100%;
-  height: 100%;
-  color: #bbb;
+  overflow: hidden;
 }
 
 a{
   color: #bbb;
 }
+
+.view{
+  width: 100%;
+  height: 100%;
+  color: #bbb;
+}
+
+.view.ng-enter,
+.view.ng-leave {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+  position: relative;
+}
+
+.view.ng-enter,
+.view.ng-leave.ng-leave-active {
+  left: -50px;
+  opacity:0;
+}
+.view.ng-leave,
+.view.ng-enter.ng-enter-active {
+  left: 0;
+  opacity:1;
+}
+
+
 
 .absolute-center{
   overflow: auto;
@@ -28,6 +49,9 @@ section{
   width: 100%;
   height: 100%;
 }
+
+
+
 
 @import "cover";
 @import "section";
